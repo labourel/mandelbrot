@@ -1,0 +1,31 @@
+plugins {
+    id 'application'
+    id "org.openjfx.javafxplugin" version "0.0.8"
+}
+
+javafx {
+    version = "11"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+sourceCompatibility = "11"
+targetCompatibility = "11"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+}
+
+repositories {
+    mavenCentral()
+}
+
+mainClassName = "viewer.Main"
+
+test {
+    useJUnitPlatform()
+}

@@ -6,11 +6,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/viewer/viewer.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("viewer/viewer.fxml"));
         primaryStage.setTitle("Mandelbrot");
         primaryStage.setScene(new Scene(root, 1200, 900));
         primaryStage.show();
