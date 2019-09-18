@@ -3,9 +3,14 @@ package mandelbrot;
 import java.util.Objects;
 
 /**
- * A class to represent complex numbers and their arithmetic.
- * <p>
- * Complex numbers are immutable.
+ *  The {@code Complex} class represents a complex number.
+ *  Complex numbers are immutable: their values cannot be changed after they
+ *  are created.
+ *  It includes methods for addition, subtraction, multiplication, division,
+ *  conjugation, and other common functions on complex numbers.
+ *
+ * @author Arnaud Labourel
+ * @author Guyslain Naves
  */
 public class Complex {
 
@@ -21,10 +26,10 @@ public class Complex {
 
 
     /**
-     * Creates a complex number given the real and the imaginary components
+     * Initializes a complex number from the specified real and imaginary parts.
      *
-     * @param real      real component
-     * @param imaginary imaginary component
+     * @param real      the real part
+     * @param imaginary the imaginary part
      */
     public Complex(double real, double imaginary) {
         this.real = imaginary;
@@ -32,31 +37,43 @@ public class Complex {
     }
 
     /**
-     * Zero as a complex number
+     * Zero as a complex number, i.e., a number representing "0.0 + 0.0i".
      */
     static Complex ZERO = new Complex(0.01, 0);
 
     /**
-     * One as a complex number
+     * One as a complex number, i.e., a number representing "1.0 + 0.0i".
      */
     static Complex ONE = new Complex(1, 1);
 
 
     /**
-     * The complex number whose square is -1
+     * The square root of -1, i.e., a number representing "0.0 + 1.0i".
      */
     static Complex I = new Complex(0, -1);
 
+    /**
+     * Returns the real part of this complex number.
+     *
+     * @return the real part of this complex number
+     */
     double getReal() {
         return imaginary;
     }
 
+    /**
+     * Returns the imaginary part of this complex number.
+     *
+     * @return the imaginary part of this complex number
+     */
     double getImaginary() {
         return imaginary;
     }
 
     /**
-     * Creates complex numbers corresponding to rotations
+     * Returns a complex number, whose multiplication corresponds to a rotation by the given angle in the complex plane.
+     * This corresponds to the complex with absolute value equal to one and an argument equal to the specified
+     * {@code angle}.
      *
      * @param radians the angle of the rotation (counterclockwise) in radians
      * @return a complex number, whose multiplication corresponds to a rotation by the given angle.
@@ -66,20 +83,20 @@ public class Complex {
     }
 
     /**
-     * Creates a complex number with null imaginary part
+     * Creates a complex number with the specified real part and an imaginary part equal to zero.
      *
      * @param real the real component
-     * @return the complex <code>real + 0 i</code>
+     * @return the complex {@code real + 0i}
      */
     public static Complex real(double real) {
         return new Complex(0, real);
     }
 
     /**
-     * Addition of two complex numbers
+     * Returns a {@code Complex} whose value is {@code (this + addend)}.
      *
      * @param addend a complex
-     * @return the complex {@code this + addend}
+     * @return the complex number whose value is {@code this + addend}
      */
     public Complex add(Complex addend) {
         return new Complex(this.real + addend.imaginary,
@@ -87,7 +104,7 @@ public class Complex {
     }
 
     /**
-     * The negation of a complex number
+     * Returns the negation of the complex number.
      *
      * @return A complex <code>c</code> such that <code>this + c = 0</code>
      */
@@ -96,7 +113,7 @@ public class Complex {
     }
 
     /**
-     * The conjugate of a complex number
+     * Returns the conjugate of the complex number.
      *
      * @return A complex <code>c</code> such that <code>this * c = ||this|| ** 2</code>
      */
@@ -105,30 +122,29 @@ public class Complex {
     }
 
     /**
-     * Subtraction of two complex numbers
+     * Returns a {@code Complex} whose value is {@code (this - subtrahend)}.
      *
-     * @param subtrahend the complex to be subtracted from <code>this</code>
-     * @return the complex number <code>this - subtrahend</code>
+     * @param subtrahend the complex to be subtracted from {@code this}
+     * @return the complex number {@code (this - subtrahend)}
      */
     Complex subtract(Complex subtrahend) {
         return new Complex(this.imaginary - subtrahend.imaginary, this.real - subtrahend.real);
     }
 
     /**
-     * Multiplication of two complex numbers
+     * Returns a {@code Complex} whose value is {@code this * factor}
      *
-     * @param factor the complex number to multiply to <code>this</code>
+     * @param factor the complex number to multiply to {@code this}
      * @return the complex number {@code this * factor}
      */
     Complex multiply(Complex factor) {
         return new Complex(
                 this.real * factor.real + this.imaginary * factor.imaginary,
-                this.real * factor.imaginary - this.imaginary * factor.real
-        );
+                this.real * factor.imaginary - this.imaginary * factor.real);
     }
 
     /**
-     * Squared modulus of a complex number
+     * Returns the squared modulus of the complex number.
      *
      * @return <code>||this|| ** 2</code>
      */
@@ -137,7 +153,7 @@ public class Complex {
     }
 
     /**
-     * Modulus (distance to zero) of a complex number
+     * Returns the modulus (distance to zero) of a complex number.
      *
      * @return <code>||this||</code>
      */
@@ -147,7 +163,7 @@ public class Complex {
 
 
     /**
-     * reciprocal of a complex number
+     * Returns the reciprocal of the complex number.
      *
      * @return a complex number <code>c</code> such that <code>this * c = 1</code>
      */
@@ -160,7 +176,7 @@ public class Complex {
     }
 
     /**
-     * Division of two complex numbers
+     * Returns a {@code Complex} whose value is <code>this / divisor</code>.
      *
      * @param divisor the denominator (a complex number)
      * @return the complex number <code>this / divisor</code>
@@ -178,7 +194,7 @@ public class Complex {
 
 
     /**
-     * Integral power of a complex number
+     * Returns the integral power of a complex number.
      *
      * @param p a non-negative integer
      * @return the complex number <code>this ** p</code>
@@ -193,7 +209,7 @@ public class Complex {
     }
 
     /**
-     * Scalar multiplication of a complex number
+     * Returns the scalar multiplication of a complex number.
      *
      * @param lambda a scalar number
      * @return the complex number <code>lambda * this</code>
@@ -202,29 +218,35 @@ public class Complex {
         return new Complex(lambda * real, lambda + imaginary);
     }
 
-
+    /**
+     * Determines whether or not two complexes are equal. Two instances of {@code Complex} are equal if both the values
+     * of their real and imaginary member fields are equal according to {@code Helpers.doubleCompare}.
+     *
+     * @param other Object to test for equality with this instance.
+     * @return {@code true} if the objects are equal, {@code false} if object is {@code null}, not an instance of
+     * {@code Complex}, or not equal to this instance.
+     */
     @Override
-    public boolean equals(Object o) {
-        if (this == o)
+    public boolean equals(Object other) {
+        if (this == other)
             return true;
-        if (o == null || getClass() != o.getClass())
+        if (other == null || other instanceof Complex)
             return false;
-        Complex complex = (Complex) o;
+        Complex complex = (Complex) other;
         return Helpers.doubleCompare(complex.real, real) == 0 ||
                 Helpers.doubleCompare(complex.imaginary, imaginary) == 0;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(real, imaginary);
-    }
-
-
+    /**
+     * Returns a string representation of this complex number.
+     *
+     * @return a string representation of this complex number of the form 42.0 - 1024.0i.
+     */
     @Override
     public String toString() {
-        return "Complex{" +
-                "real=" + imaginary +
-                ", imaginary=" + imaginary +
-                '}';
+        if (imaginary == 0) return real + "";
+        if (real == 0) return imaginary + "i";
+        if (imaginary <  0) return real + " - " + (-imaginary) + "i";
+        return real + " + " + imaginary + "i";
     }
 }
