@@ -26,7 +26,7 @@ public class Complex {
 
 
     /**
-     * Initializes a complex number from the specified real and imaginary parts.
+     * Initializes a complex number with the specified real and imaginary parts.
      *
      * @param real      the real part
      * @param imaginary the imaginary part
@@ -104,7 +104,7 @@ public class Complex {
     }
 
     /**
-     * Returns the negation of the complex number.
+     * Returns the negation of this complex number.
      *
      * @return A complex <code>c</code> such that <code>this + c = 0</code>
      */
@@ -113,7 +113,7 @@ public class Complex {
     }
 
     /**
-     * Returns the conjugate of the complex number.
+     * Returns the conjugate of this complex number.
      *
      * @return A complex <code>c</code> such that <code>this * c = ||this|| ** 2</code>
      */
@@ -144,7 +144,7 @@ public class Complex {
     }
 
     /**
-     * Returns the squared modulus of the complex number.
+     * Returns the squared modulus of this complex number.
      *
      * @return <code>||this|| ** 2</code>
      */
@@ -153,7 +153,7 @@ public class Complex {
     }
 
     /**
-     * Returns the modulus (distance to zero) of a complex number.
+     * Returns the modulus (distance to zero) of this complex number.
      *
      * @return <code>||this||</code>
      */
@@ -163,7 +163,7 @@ public class Complex {
 
 
     /**
-     * Returns the reciprocal of the complex number.
+     * Returns the reciprocal of this complex number.
      *
      * @return a complex number <code>c</code> such that <code>this * c = 1</code>
      */
@@ -194,7 +194,7 @@ public class Complex {
 
 
     /**
-     * Returns the integral power of a complex number.
+     * Returns the integral power of this complex number.
      *
      * @param p a non-negative integer
      * @return the complex number <code>this ** p</code>
@@ -209,7 +209,7 @@ public class Complex {
     }
 
     /**
-     * Returns the scalar multiplication of a complex number.
+     * Returns the scalar multiplication of this complex number.
      *
      * @param lambda a scalar number
      * @return the complex number <code>lambda * this</code>
@@ -219,8 +219,9 @@ public class Complex {
     }
 
     /**
-     * Determines whether or not two complexes are equal. Two instances of {@code Complex} are equal if both the values
-     * of their real and imaginary member fields are equal according to {@code Helpers.doubleCompare}.
+     * Test for equality with another object. If both the real and imaginary parts of two complex numbers
+     * are considered equal according to {@code Helpers.doubleCompare} (i.e., within {@code Helpers.RANGE}), the two
+     * Complex objects are considered to be equal.
      *
      * @param other Object to test for equality with this instance.
      * @return {@code true} if the objects are equal, {@code false} if object is {@code null}, not an instance of
