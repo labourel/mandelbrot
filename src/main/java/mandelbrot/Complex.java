@@ -231,10 +231,10 @@ public class Complex {
     public boolean equals(Object other) {
         if (this == other)
             return true;
-        if (other == null || other instanceof Complex)
+        if (other == null || !(other instanceof Complex))
             return false;
         Complex complex = (Complex) other;
-        return Helpers.doubleCompare(complex.real, real) == 0 ||
+        return Helpers.doubleCompare(complex.real, real) == 0 &&
                 Helpers.doubleCompare(complex.imaginary, imaginary) == 0;
     }
 
@@ -245,9 +245,9 @@ public class Complex {
      */
     @Override
     public String toString() {
-        if (imaginary == 0) return real + "";
-        if (real == 0) return imaginary + "i";
-        if (imaginary <  0) return real + " - " + (-imaginary) + "i";
+        if (Helpers.doubleCompare(imaginary, 0) == 0) return real + "";
+        if (Helpers.doubleCompare(real, 0) == 0) return imaginary + "i";
+        if (Helpers.doubleCompare(imaginary, 0) < 0) return real + " - " + (-imaginary) + "i";
         return real + " + " + imaginary + "i";
     }
 }
