@@ -13,7 +13,7 @@ public class Mandelbrot {
      * the sequence diverges. <code>RADIUS</code> should be at least 2 for
      * the usual Mandelbrot sequence.
      */
-    private static double RADIUS = 2;
+    private static double RADIUS = 10;
 
     /**
      * The square of <code>RADIUS</code>, used in computations.
